@@ -2,6 +2,7 @@ databases:
   - name: reserveat
     databaseName: reserveat
     user: reserveat
+    plan: free
 
 services:
   - type: web
