@@ -1,0 +1,46 @@
+<br><br><br><br>
+<h1>Editar reserva</h1>
+<br>
+<%= form_with model: [@restaurant, @reservation] do |form| %>
+<form>
+<% if @reservation.errors.any? %>
+    <h2>Errors:</h2>
+    <ul><% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <div class="form-group row">
+    <label for="inputUsername" class="col-sm-2 col-form-label"><%= form.label 'Nombre' %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :nombre_usuario, class:"form-control w-25", placeholder:"Username" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTableID" class="col-sm-2 col-form-label"><%= form.label 'Fecha de reserva' %></label>
+    <div class="col-sm-10">
+      <%= form.date_field :fecha_reserva, class:"form-control w-25", placeholder:"Reservation date" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputStartTime" class="col-sm-2 col-form-label"><%= form.label "Hora de inicio" %></label>
+    <div class="col-sm-10">
+      <%= form.time_field :hora_inicio, class:"form-control w-25", placeholder:"Start time" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEndingTime" class="col-sm-2 col-form-label"><%= form.label "Hora de término" %></label>
+    <div class="col-sm-10">
+      <%= form.time_field :hora_termino, class:"form-control w-25", placeholder:"Ending time" %>
+    </div>
+  </div>    
+    <div>
+        <%= form.submit "Editar reserva", class:"btn btn-secondary"%>
+        <%= link_to 'Volver', reservations_path, class:"btn btn-dark"%>
+    </div>
+
+</form>
+<% end %>

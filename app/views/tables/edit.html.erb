@@ -1,0 +1,56 @@
+<br><br><br><br><br>
+<div class='container' align='left'>
+<h1>Edit Table</h1><br>
+
+<%= form_for @table do |form| %>
+<form>
+<% if @table.errors.any? %>
+    <h2>Errors:</h2>
+    <ul><% @table.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+  <div class="form-group row">
+    <label for="inputUsername" class="col-sm-2 col-form-label"><%= form.label :'Restaurant_name' %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :'nombre_restaurant', class:"form-control w-25", placeholder:"Restaurant name" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTableID" class="col-sm-2 col-form-label"><%= form.label :Capacity %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :capacidad, class:"form-control w-25", placeholder:"Capacity" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputStartTime" class="col-sm-2 col-form-label"><%= form.label :Location %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :ubicacion, class:"form-control w-25", placeholder:"Location" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEndingTime" class="col-sm-2 col-form-label"><%= form.label :Availability %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :disponibilidad, class:"form-control w-25", placeholder:"Availability" %>
+    </div>
+  </div>    
+
+  <div class="form-group row">
+    <label for="inputEndingTime" class="col-sm-2 col-form-label"><%= form.label :Smoking_area %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :fumador, class:"form-control w-25", placeholder:"Smoking area" %>
+    </div>
+  </div> 
+
+    <div>
+        <%= form.submit "Save", class:"btn btn-secondary"%>
+        <%= link_to 'Back', tables_path, class:"btn btn-dark"%>
+    </div>
+</form>
+<% end %>
+</div>
+<br><br>

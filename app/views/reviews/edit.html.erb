@@ -1,0 +1,25 @@
+<br><br><br><br><br>
+
+<%= form_with model: [@restaurant, @review] do |form| %>
+<div class="container" align="center">
+<h1>Edit Review</h1><br>
+    <div>
+        <%= form.label :'Title' %>
+        <%= form.text_field :'title' %>
+    </div>
+    <div>
+        <%= form.label :Body %>
+        <%= form.text_field :body %>
+    </div>
+    <div>
+        <%= form.label :Rating %>
+        <%= form.text_field :rating %>
+    </div>
+    <div>
+        <%= form.submit "Edit Review"%>
+    </div>
+<% end %>
+<br>
+<%= link_to 'Back', restaurants_path(anchor: 'portfolio') %>
+</div>
+<br><br><br><br><br><br><br><br>

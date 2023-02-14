@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>¡Hola <%= @reservation.nombre_usuario %>, tu reserva en <%= @reservation.restaurant.name %> ha sido exitosa!</p>
+    <p>
+    Detalles de la reserva<br>
+    --------------------------
+    </p>
+    <p>Fecha: <%= @reservation.fecha_reserva %></p>
+    <p>Hora de inicio: <%= @reservation.hora_inicio.strftime("%I:%M%p") %></p>
+    <p>Hora de término: <%= @reservation.hora_termino.strftime("%I:%M%p") %></p>
+    <p>Cantidad de personas: <%= @reservation.people %></p>
+    <p>Ubicación: <%= @reservation.ubicacion %></p>
+    <% if @reservation.fumador %>
+      <p>Área fumador: Si</p>
+    <% else %>
+      <p>Área fumador: No</p>
+    <% end %>
+    <p>
+    --------------------------
+    </p>
+    <p> ¡Disfruta tu comida! </p>
+
+    <p>Reserv-eat &copy; 2022.</p>
+
+  </body>
+</html>

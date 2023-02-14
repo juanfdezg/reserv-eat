@@ -1,0 +1,52 @@
+<br><br><br><br><br>
+<div class="container", align="center">
+  <h1>Revisa las mesas!</h1>
+</div>
+
+<br>
+<table class="table table-striped table-hover w-50", align="center">
+  <thead class="thead-dark">
+    <tr>
+        <th>Restaurante</th>
+        <th>Disponibilidad</th>
+        <th>Capacidad</th>
+        <th>Ubicación</th>
+        <th>Área fumadores</th>
+        <th></th>
+        <% if current_user && current_user.moderator? %>
+        <th></th>
+        <th></th>
+        <% end %>
+    </tr>
+        <% @tables.each do |table| %>
+        <tr>
+          <% if current_user.id == table.restaurant.user_id %>
+            <td><%= table.restaurant.name%></td>
+            <% if table.disponibilidad %>
+              <td> Si </td>
+            <% else %>
+              <td>No</td>
+            <% end %>
+            <td><%= table.capacidad%></td>
+            <td><%= table.ubicacion%></td>
+            <% if table.fumador %>
+              <td> Si </td>
+            <% else %>
+              <td>No</td>
+            <% end %>
+            <% if current_user && current_user.moderator? %>
+                <td><%= link_to 'Editar', edit_table_path(table), class:"btn btn-info btn-sm" %></td>
+                <td><%= link_to 'Eliminar', table_path(table), class:"btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            <% end %>
+          <% end %>
+        </tr>
+        <% end %>
+
+</table>
+<% if !Table.any? %>
+  <div align="center">
+  <h4>No hay ninguna mesa creada aún.</h4>
+  </div>
+<% end %>
+<h4 align= 'center'><%= link_to 'Volver', restaurants_path(anchor: 'portfolio'), class:"btn btn-dark btn-sm" %></h4>
+<br><br><br><br><br><br><br>

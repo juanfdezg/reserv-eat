@@ -1,0 +1,24 @@
+<br><br><br><br>
+<div align="center">
+<br>
+<h1>Nueva conversación</h1><br>
+
+<%= form_tag conversations_path, method: :post do %>
+<div>
+  <div>
+    <%= select_tag :user_id, options_from_collection_for_select(@recipients, :id, :name), class:"form-select-sm" %>
+  </div>
+   <br>
+  <div>
+    <%= text_field_tag :subject, nil, placeholder:"Asunto", class:"form-control-sm", required: true %>
+  </div>
+   <br>
+  <div>
+    <%= text_area_tag :body, nil, placeholder:"Deja un comentario", class:"form-control-sm", required: true %>
+  </div>
+
+<%= submit_tag "Enviar mensaje", class:"btn btn-success" %>
+</div>
+<% end %>
+</div>
+<br><br><br><br><br><br><br>

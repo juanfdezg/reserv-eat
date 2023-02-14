@@ -1,0 +1,14 @@
+<br><br><br><br><br>
+<div align="center">
+<h1>Todas mis conversaciones</h1>
+
+<% @conversations.each do |conversation| %>
+<div>
+  <%= link_to conversation.subject, conversation_path(conversation) %>
+</div>
+<% end %>
+
+<br>
+<%= link_to "Nueva conversación", new_conversation_path, class:"btn-link" %>
+</div>
+<br><br><br><br><br><br><br><br>

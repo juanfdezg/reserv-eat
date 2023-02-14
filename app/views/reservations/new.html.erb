@@ -1,0 +1,73 @@
+<br><br><br><br>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+<%= form_with model: [@restaurant, Reservation.new] do |form| %>
+<form>
+
+
+<br>
+<div class="container">
+<h1>Agenda tu reserva</h1> <br>
+  <div class="form-group row">
+    <label for="inputUsername" class="col-sm-2 col-form-label"><%= form.label :nombre %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :nombre_usuario, class:"form-control w-25", value: current_user.name, readonly: true %>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="inputTableID" class="col-sm-2 col-form-label"><%= form.label "Fecha reserva" %></label>
+    <div class="col-sm-10">
+      <%= form.date_field :fecha_reserva, class:"form-control w-25", placeholder:"Reservation date", required: true %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputStartTime" class="col-sm-2 col-form-label"><%= form.label "Hora de inicio" %></label>
+    <div class="col-sm-10">
+      <%= form.time_select :hora_inicio, {minute_step: 15 , placeholder:"Hora inicio"}, class: "form-control-sm", required: true %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputEndingTime" class="col-sm-2 col-form-label"><%= form.label "Hora de término" %></label>
+    <div class="col-sm-10">
+      <%= form.time_select :hora_termino, {minute_step: 15 , placeholder:"Hora término"}, class: "form-control-sm", required: true  %>
+    </div>
+
+  <div class="form-group row">
+  <label for="inputTableID" class="col-sm-2 col-form-label"><%= form.label :personas %></label>
+  <div class="col-sm-10">
+    <%= form.select(:people, [1,2,3,4,5,6,7,8]) %>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputUbicacion" class="col-sm-2 col-form-label"><%= form.label :Ubicación %></label>
+    <div class="col-sm-10">
+      <%= form.select(:ubicacion, ["Afuera", "Adentro"]) %>
+    </div>
+  </div>
+ 
+
+  <div class="form-group row">
+    <label for="inputFumadores" class="col-sm-2 col-form-label"><%= form.label 'Área fumadores' %></label>
+    <div class="col-sm-10">
+      <%= form.select(:fumador, [["Si", true], ["No", false]]) %>
+    </div>
+  </div> 
+
+  </div>
+  </div>    
+    <div>
+        <%= form.submit "Agendar reserva", class:"btn btn-success" %>
+        <%= link_to 'Volver', restaurants_path(anchor: 'portfolio'), class:"btn btn-dark" %>
+    </div>
+</div>
+</form>
+
+<% end %>
+<br><br><br><br>

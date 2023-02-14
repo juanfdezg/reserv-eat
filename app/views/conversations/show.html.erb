@@ -1,0 +1,21 @@
+<br><br><br><br><br><br>
+<div align="center">
+<h1> <%= @conversation.subject %></h1>
+
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+  <div>
+    <div><%= receipt.message.sender.name %> comentó:</div>
+    <p><%= receipt.message.body %></p> 
+  </div> 
+<% end %>
+
+<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+<br>
+<div>
+  <%= text_area_tag :body, nil, placeholder:"Deja un comentario", class:"form-control-sm", required: true %>
+</div>
+
+<%= submit_tag "Enviar mensaje", class:"btn btn-success" %>
+<% end %>
+</div>
+<br><br><br><br><br><br>

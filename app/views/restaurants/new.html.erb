@@ -1,0 +1,84 @@
+<br><br><br><br><br>
+<%= form_for @restaurant do |form| %>
+
+<form>
+<div class="container">
+<h1>Nuevo restaurante</h1> <br>
+<% if @restaurant.errors.any? %>
+    <h2>Errors:</h2>
+    <ul><% @restaurant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group row">
+    <label for="inputName" class="col-sm-2 col-form-label"><%= form.label :nombre %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :name, class:"form-control w-25", placeholder:"Nombre restaurante" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputSlogan" class="col-sm-2 col-form-label"><%= form.label 'Slogan (opcional)' %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :slogan, class:"form-control w-25", placeholder:"Slogan" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputAddress" class="col-sm-2 col-form-label"><%= form.label "Dirección" %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :address, class:"form-control w-25", placeholder:"Dirección" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputCommune" class="col-sm-2 col-form-label"><%= form.label :comuna %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :commune, class:"form-control w-25", placeholder:"Comuna" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputOpen" class="col-sm-2 col-form-label"><%= form.label "Hora de apertura" %></label>
+    <div class="col-sm-10">
+      <%= form.time_select :open, {minute_step: 15 , placeholder:"Hora apertura"}, class: "form-control-sm", required: true %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputClose" class="col-sm-2 col-form-label"><%= form.label "Hora de cierre" %></label>
+    <div class="col-sm-10">
+      <%= form.time_select :close, {minute_step: 15 , placeholder:"Hora cierre"}, class: "form-control-sm", required: true %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputFood" class="col-sm-2 col-form-label"><%= form.label "Especialidad comida" %></label>
+    <div class="col-sm-10">
+      <%= form.text_field :food, class:"form-control w-25", placeholder:"Comida" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputDescription" class="col-sm-2 col-form-label"><%= form.label "Descripción" %></label>
+    <div class="col-sm-10">
+      <%= form.text_area :description, class:"form-control w-25", rows:"3", placeholder:"Descripción" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputLogo" class="col-sm-2 col-form-label"><%= form.label :foto %></label>
+    <div class="col-sm-10">
+      <%= form.file_field :logo, class:"form-control w-50", placeholder:"Sube una foto de tu restauruant" %>
+    </div>
+  </div>
+
+    <div>
+        <%= form.submit "Crear restaurant", class:"btn btn-success"%>
+        <%= link_to 'Volver', restaurants_path(anchor: 'portfolio'), class:"btn btn-dark" %>
+    </div>
+</div>
+</form>
+<% end %>

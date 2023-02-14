@@ -1,0 +1,55 @@
+<br><br><br><br><br>
+
+<%= form_with model: [@restaurant, @reservation] do |form| %>
+<div class="container", align="center">
+<h1>Detalles de reserva</h1><br>
+    <div>
+        <%= form.label 'Restaurante: '%>
+        <%= @reservation.restaurant.name %>
+    </div>
+    <div>
+        <%= form.label  'Nombre persona: '%>
+        <%= @reservation.nombre_usuario %>
+    </div>
+    <div>
+        <%= form.label  'Fecha de reserva: ' %>
+        <%= @reservation.fecha_reserva %>
+    </div>
+    <div>
+        <%= form.label  'Hora de inicio: ' %>
+        <%= @reservation.hora_inicio.strftime("%I:%M%p") %>
+    </div>
+    <div>
+        <%= form.label  'Hora de término: '%>
+        <%= @reservation.hora_termino.strftime("%I:%M%p") %>
+    </div>
+    <div>
+        <%= form.label  'Personas: '%>
+        <%= @reservation.people %>
+    </div>
+    <div>
+        <%= form.label  'Ubicación: '%>
+        <%= @reservation.ubicacion %>
+    </div>
+    <div>
+        <%= form.label  'Área fumadores: '%>
+        <% if @reservation.fumador %>
+                   Si
+                <% else %>
+                  No
+                <% end %>
+    </div>
+
+    <div>
+        <%= form.label  'Estado: '%>
+        <%= @reservation.status.capitalize %>
+        <% if @reservation.aprobada? && current_user.moderator? %>
+          <%= link_to 'Rechazar', reject_status_reservation_path(@reservation) , method: 'put', class:"btn btn-danger" %>
+        <% end %>
+    </div>
+
+<% end %>
+<br>
+<%= link_to 'Volver', reservations_path, class:"btn btn-dark" %>
+</div>
+<br><br><br><br><br><br><br><br>
