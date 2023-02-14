@@ -1,18 +1,18 @@
 databases:
-  - name: reserv-eat
-    databaseName: reserv-eat
-    user: reserv-eat
+  - name: reserveat
+    databaseName: reserveat
+    user: reserveat
 
 services:
   - type: web
-    name: reserv-eat
+    name: reserveat
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: reserv-eat
+          name: reserveat
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
